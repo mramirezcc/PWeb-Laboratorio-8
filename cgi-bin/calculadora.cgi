@@ -17,9 +17,19 @@ HTML
 
 my $q = CGI->new;
 my $operation = $q->param("operation");
+my $answer = 0;
 
-if($operation =~ /^[0-9]+.[+-*/][0-9]+$/){
-    print "<h1>Operación válida</h1>";
+if($operation =~ /^[0-9]+[\+\-\*\/][0-9]+$/){
+    if($operation =~ /^([0-9]+)\+([0-9]+)$/){
+        $answer = $1 + $2;
+    }elsif($operation =~ /^([0-9]+)\-([0-9]+)$/){
+        $answer = $1 - $2;
+    }elsif($operation =~ /^([0-9]+)\*([0-9]+)$/){
+        $answer = $1 * $2;
+    }elsif($operation =~ /^([0-9]+)\/([0-9]+)$/){
+        $answer = $1 / $2;
+    }
+    print "La respuesta es: $answer";
 }else{
     print "<h1>Operación no válida</h1>";
 }
