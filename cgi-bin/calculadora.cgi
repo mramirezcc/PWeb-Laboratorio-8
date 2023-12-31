@@ -29,7 +29,11 @@ if($operation =~ /^[0-9]+[\+\-\*\/][0-9]+$/){
     }elsif($operation =~ /^([0-9]+)\/([0-9]+)$/){
         $answer = $1 / $2;
     }
-    print "La respuesta es: $answer";
+    if(defined $answer){
+        print "La respuesta es: $answer";
+    }elsif{
+        print "Respuesta no definida";
+    }
 }else{
     print "<h1>Operación no válida</h1>";
 }
